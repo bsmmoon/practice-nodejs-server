@@ -1,15 +1,14 @@
-const http = require('http');
+// Reference:
+// https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const express = require('express')
+const app = express()
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain')
-  res.end('Hello World!')
-});
+const port = 3000
 
-server.listen(port, hostname, () => {
-  console.log(`Server runnning at http://${hostname}:${port}/`);
-});
+app.get('/', (req, res) => {
+  res.send('HELLO WORLD!')
+})
+
+app.listen(port, () => console.log(`Server running at port ${port}`))
 
